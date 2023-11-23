@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <a href="index.html" target="_blank">Homepage</a>
+        <a href="olympia.html" target="_blank">Olympia</a>
+        <a href="seattle.html" target="_blank">Seattle</a>
+        <a href="snoqualmie.html" target="_blank">Snoqualmie</a>
+    </nav>
+
+
+    <header>
+        <h1>Submitted!</h1>
+    </header>
+
+    <main>
+        <section>
+        </section>
+
+        <aside>
+            <div>
+                <h2 id="question">Your question:</h2>
+            </div>
+        </aside>
+        <script>
+            let section = document.querySelector("section");
+            let questionH2 = document.querySelector("#question");
+
+            let submitMsg1 = document.createElement("p");
+            let submitMsg2 = document.createElement("p");
+            let questionMsg = document.createElement("p");
+
+            let answers = (window.location.href).match(/form.html?.+/i).toString().slice(10);
+            let first = findAnswer("first-name");
+            let last = findAnswer("last-name");
+            let email = findAnswer("email");
+            let question = findAnswer("question");
+
+            submitMsg1.textContent = "Thanks for your question " + first + " " + last + "!";
+            submitMsg2.textContent =  "We will get back to you at " + email + " very soon.";
+            questionMsg.textContent = question;
+
+            section.appendChild(submitMsg1);
+            section.appendChild(submitMsg2);
+            questionH2.after(questionMsg);
+
+            function findAnswer(valueString) {
+                let regex;
+                if (valueString != "question") {
+                    regex = new RegExp(valueString + "=.+?(?=&)");
+                } else {
+                    regex = new RegExp(valueString + "=.+");
+                }
+                let valueAnswer = decodeURIComponent(answers.match(regex))
+                    .slice(valueString.length + 1)
+                    .replaceAll("+", " ");
+                return valueAnswer;
+            }
+        </script>
+    </main>
+
+
+    <footer>
+        <p>Creator: Rayden</p>
+    </footer>
+</body>
+
+</html>

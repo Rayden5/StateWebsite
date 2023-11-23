@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Washington State</title>
+    <link href="styles.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html">Homepage</a>
+        <a href="olympia.html" target="_blank">Olympia</a>
+        <a href="seattle.html" target="_blank">Seattle</a>
+        <a href="snoqualmie.html" target="_blank">Snoqualmie</a>
+    </nav>
+
+
+    <header>
+        <h1>Washington State</h1>
+        <p>A website all about Washington State</p>
+    </header>
+
+    <main>
+        <section>
+            <figure>
+                <h3>Mount Rainier</h3>
+                <img src="WashingtonState.jpeg" alt="View of Mount Rainier">
+                <figcaption>Hild, J. (2023). <cite>Volcano Cone of Mount
+                        Rainier.</cite></figcaption>
+            </figure>
+            <h2>About Washington State</h2>
+            <p>A scenic state with sprawling forests, reservations,
+                mountains, and beaches. It is the birthplace of many tech
+                companies like Amazon and Microsoft. It is also most known for
+                its coffee and rain. Find out <a href="https://www.google.com/" target="_blank">more</a>!</p>
+            <h2>Things to do in Washington</h2>
+            <ul>
+                <li>Go hiking</li>
+                <li>Go camping</li>
+                <li>Go skiing</li>
+                <li>Drink coffee</li>
+                <li>Visit National parks</li>
+                <li>Vist National forests</li>
+                <li>Vist beaches</li>
+            </ul>
+            <h2>Washington National Parks</h2>
+            <table>
+                <tr>
+                    <th>National Parks</th>
+                    <th>Location</th>
+                    <th>Cost</th>
+                </tr>
+                <tr>
+                    <td>Olympic National Park</td>
+                    <td>On the Olympic Peninsula</td>
+                    <td>$15 to $30 (U.S. National Park Service, n.d.-a)</td>
+                </tr>
+                <tr>
+                    <td>Mount Rainier National Park</td>
+                    <td>Southeast of Seattle</td>
+                    <td>$15 to $30 (U.S. National Park Service, n.d.-b)</td>
+                </tr>
+                <tr>
+                    <td>North Cascades National Park</td>
+                    <td>East of Mt Baker</td>
+                    <td>No fee</td>
+                </tr>
+            </table>
+        </section>
+
+        <aside>
+            <form action="form.html" target="_blank">
+                <caption>Submit a question:</caption>
+                <hr>
+                <p>
+                    <label for="first">First Name:</label>
+                    <input type="text" placeholder="First name..."
+                           name="first-name" id="first" required>
+                </p>
+                <p>
+                    <label for="last">Last Name:</label>
+                    <input type="text" placeholder="Last name..."
+                           name="last-name" id="last">
+                </p>
+                <p>
+                    <label for="email">Email:</label>
+                    <input type="email" placeholder="Email..." name="email"
+                           id="email" required>
+                </p>
+                <p>
+                    <label for="email-confirm">Confirm Email:</label>
+                    <input type="email" placeholder="Confirm Email..."
+                           name="email-confirm" id="email-confirm" required>
+                </p>
+                <p>
+                    <label for="question">Question:</label>
+                </p>
+                <p>
+                    <textarea rows="5"
+                              placeholder="How many mountains does Washington have...?"
+                              id="question" name="question" required></textarea>
+                </p>
+
+                <button value="submit" id="submit">Submit</button>
+            </form>
+
+            <script>
+                let emailBtn = document.querySelector("#email");
+                let emailConfirm = document.querySelector("#email-confirm");
+                let submitBtn = document.querySelector("#submit");
+                let validEmail = true;
+
+                emailConfirm.addEventListener("input", checkEmails);
+                emailBtn.addEventListener("input", checkEmails);
+
+                submitBtn.addEventListener("click", (event) => {
+                    if (emailConfirm.value == "") {
+                        emailConfirm.reportValidity();
+                    } else if (!validEmail) {
+                        event.preventDefault();
+                        emailConfirm.setCustomValidity("Emails must match.");
+                        emailConfirm.reportValidity();
+                    }
+                })
+
+                function checkEmails() {
+                    emailConfirm.setCustomValidity("");
+                    validEmail = emailBtn.value.toLowerCase() == emailConfirm.value.toLowerCase()
+                }
+            </script>
+
+            <div class="bg-img">
+                <h2>Background Image</h2>
+                <p>Hild, J. (2023). <cite>Stratovolcano in
+                        Mount Rainier National Park.<cite>
+                </p>
+            </div>
+            <div class="references">
+                <h2>Reference List</h2>
+                <ol>
+                    <li>U.S. National Park Service. (n.d.-a). <cite>Fees &
+                            Passes -
+                            Mount Rainier National Park.</cite> National Park
+                        Service.
+                        https://www.nps.gov/mora/planyourvisit/fees.html</li>
+                    <li>U.S. National Park Service. (n.d.-b). <cite>Fees &
+                            passes -
+                            Olympic National Park.</cite> National Park Service.
+                        Retrieved
+                        November 16, 2023, from
+                        https://www.nps.gov/olym/planyourvisit/fees.html
+                    </li>
+                </ol>
+            </div>
+        </aside>
+
+        <div id="city-explore">
+            <h2>EXPLORE STATE CITIES</h2>
+            <div id="city-flex">
+                <a class="city" href="olympia.html" target="_blank">
+                    <figure>
+                        <h3>Olympia</h3>
+                        <img src="Olympia.jpeg"
+                             alt="Olympia City with Mount Rainier in the background">
+                        <figcaption>Callery, J. (2019). <cite>Purple Sunset Over
+                                Olympia, Washington.</cite></figcaption>
+                    </figure>
+                </a>
+                <a class="city" href="seattle.html" target="_blank">
+                    <figure>
+                        <h3>Seattle</h3>
+                        <img src="Seattle.jpeg"
+                             alt="Seattle city with the Space needle in the center">
+                        <figcaption>Leonardi, S. (2023). <cite>Space Needle in
+                                Seattle.</cite></figcaption>
+                    </figure>
+                </a>
+                <a class="city" href="snoqualmie.html" target="_blank">
+                    <figure>
+                        <h3>Snoqualmie</h3>
+                        <img src="Snoqualmie.jpg"
+                             alt="Cliff view of Snoqualmie falls">
+                        <figcaption>Gulnaz Sh. (2021).</figcaption>
+                    </figure>
+                </a>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <p>Creator: Rayden</p>
+    </footer>
+
+</body>
+
+</html>
